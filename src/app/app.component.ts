@@ -15,7 +15,8 @@ export class AppComponent implements OnInit {
   constructor(private service:AppServicesService) { }
 
 ngOnInit() {
-  this.service.loadData()
+  let data = localStorage.getItem("todos")
+  if(data) return this.todos = JSON.parse(data as any)
 }
 toggleDone(id: number) {
     this.todos.map((a, b) => {
